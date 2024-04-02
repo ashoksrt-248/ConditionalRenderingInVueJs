@@ -1,6 +1,16 @@
 <template>
   <div id="app">
-    <h2>This Number is Zero</h2>
+    <h2 v-if="num === 0">The Number is Zero</h2>
+    <h2 v-else-if="num < 0">The Number is Negative</h2>
+    <h2 v-else-if="num > 0">The Number is Positive</h2>
+    <h2 v-else>Not a Number</h2>
+    <div v-if="display">
+      <h2>Ashok</h2>
+      <h2>Amara</h2>
+      <h1>Conditional Rendering</h1>
+    </div>
+    <h2 v-show="showElement">Using v-show</h2>
+    <h2 v-if="showElement">Using v-if</h2>
     
   </div>
 </template>
@@ -10,7 +20,9 @@ export default {
   name: 'App',
   data(){
     return{
-      num:0
+      num:"hello",
+      display:true,
+      showElement:true
     }
   }
 }

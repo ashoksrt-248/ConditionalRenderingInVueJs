@@ -11,8 +11,22 @@
     </div>
     <h2 v-show="showElement">Using v-show</h2>
     <h2 v-if="showElement">Using v-if</h2>
-    
+    <hr></hr>
+    <h1>Event Handling in VueJS</h1>
+    <div>
+      <h1>{{ count }}</h1>
+      <button @click="increment(1)">Increment 1</button>
+      <button @click="increment(5)">Increment 5</button>
+      <button @click="decrement(1)">Decrement 1</button>
+      <button @click="decrement(5)">Decrement 5</button>
+    </div>
+    <div>
+      <h1>{{ name }}</h1>
+      <button @click="changeName()">Change Name</button>
+      <button @click="changeName2()">Change Name</button>
+    </div>
   </div>
+  
 </template>
 
 <script>
@@ -22,7 +36,24 @@ export default {
     return{
       num:"hello",
       display:true,
-      showElement:true
+      showElement:true,
+      count:0,
+      name:'Ashok'
+      
+    }
+  },
+  methods:{
+    increment(num){
+      this.count += num
+    },
+    decrement(num){
+      this.count -= num
+    },
+    changeName(){
+      this.name = 'DeVansh'
+    },
+    changeName2(){
+      this.name = 'VeDansh'
     }
   }
 }

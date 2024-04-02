@@ -1,16 +1,20 @@
 <template>
   <div id="app">
-    <h2 v-if="num === 0">The Number is Zero</h2>
-    <h2 v-else-if="num < 0">The Number is Negative</h2>
-    <h2 v-else-if="num > 0">The Number is Positive</h2>
-    <h2 v-else>Not a Number</h2>
+    <div>
+      <h1>Conditional Rendering</h1>
+      <h2 v-if="num === 0">The Number is Zero</h2>
+      <h2 v-else-if="num < 0">The Number is Negative</h2>
+      <h2 v-else-if="num > 0">The Number is Positive</h2>
+      <h2 v-else>Not a Number</h2>
+    </div>
     <div v-if="display">
       <h2>Ashok</h2>
       <h2>Amara</h2>
-      <h1>Conditional Rendering</h1>
     </div>
-    <h2 v-show="showElement">Using v-show</h2>
-    <h2 v-if="showElement">Using v-if</h2>
+    <div>
+      <h2 v-show="showElement">Using v-show</h2>
+      <h2 v-if="showElement">Using v-if</h2>
+    </div>
     <hr></hr>
     <h1>Event Handling in VueJS</h1>
     <div>
@@ -27,7 +31,7 @@
     </div>
     <hr>
     <div>
-      <form>
+      <form @submit="submitForm">
         <h1>Form Handling</h1>
         <pre>{{ JSON.stringify(formValues, null, 2) }}</pre>
         <div>
@@ -61,9 +65,34 @@
             <option value="america">America</option>
           </select>
         </div>
-        <br/><br/><br/><br/>
+        <br/><br/>
         <div>
-
+          <input type="checkbox" id="remoteWork" v-model="formValues.remoteWork" true-value="yes" false-value="no"/>
+          <label for="remoteWork">Open to work Remote?</label>
+        </div>
+        <br/><br/>
+        <div>
+          <label>Skill Set</label><br/>
+          <input type="checkbox" id="html" value="html" v-model="formValues.skillSet"/>
+          <label for="remoteWork">HTML</label>
+          <input type="checkbox" id="css" value="css" v-model="formValues.skillSet"/>
+          <label for="css">CSS</label>
+          <input type="checkbox" id="javascript" value="javascript" v-model="formValues.skillSet"/>
+          <label for="javascript">Javascript</label>
+        </div>
+        <div>
+          <label>Years of Experience</label>
+          <input type="radio" value="0-2" id="0-2" v-model="formValues.yearsOfExperience"/>
+          <label for="0-2">0 - 2</label>
+          <input type="radio" value="3-5" id="3-5" v-model="formValues.yearsOfExperience"/>
+          <label for="3-5">3 - 5</label>
+          <input type="radio" value="6-8" id="6-8" v-model="formValues.yearsOfExperience"/>
+          <label for="6-8">6 - 8</label>
+          <input type="radio" value="8+" id="8+" v-model="formValues.yearsOfExperience"/>
+          <label for="8+">8+</label>
+        </div>
+        <div>
+          <button class="submit">Submit</button>
         </div>
       </form>
     </div>
@@ -85,7 +114,10 @@ export default {
       name:'',
       profileSummary:'',
       country:'',
-      jobLocation:[]
+      jobLocation:[],
+      remoteWork:"no",
+      skillSet:[],
+      yearsOfExperience:''
     }
       
     }
@@ -102,6 +134,10 @@ export default {
     },
     changeName2(){
       this.name = 'VeDansh'
+    },
+    submitForm(event){
+      event.preventDefault();
+      
     }
   }
 }
@@ -117,7 +153,7 @@ export default {
   margin-top: 60px;
   background-color: slategrey;
 }
-input{width:300px;height: 30px;}
+.name{width:300px;height: 30px;}
 textarea{width: 300px;height:70px}
 select{width:300px;height: 50px;}
 </style>

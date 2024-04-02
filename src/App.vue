@@ -25,6 +25,48 @@
       <button @click="changeName()">Change Name</button>
       <button @click="changeName2()">Change Name</button>
     </div>
+    <hr>
+    <div>
+      <form>
+        <h1>Form Handling</h1>
+        <pre>{{ JSON.stringify(formValues, null, 2) }}</pre>
+        <div>
+          <label for="name">Name</label><br/>
+          <input type="text" id="name" v-model="formValues.name" />
+        </div>
+        <br/>
+        <div>
+          <label for="profile">Profile Summary</label><br/>
+          <textarea id="profile" v-model="formValues.profileSummary" />
+        </div>
+        <div>
+          <label for="country">Country</label><br/>
+          <select id="country" v-model="formValues.country">
+            <option value="">Select a Country</option>
+            <option value="india">India</option>
+            <option value="australia">Australia</option>
+            <option value="newzeland">Newzeland</option>
+            <option value="srilanka">Srilanka</option>
+            <option value="america">America</option>
+          </select>
+        </div>
+        <div>
+          <label for="jobLocation">Job Location</label><br/>
+          <select id="jobLocation" multiple v-model="formValues.jobLocation">
+            <option value="">Select a Country</option>
+            <option value="india">India</option>
+            <option value="australia">Australia</option>
+            <option value="newzeland">Newzeland</option>
+            <option value="srilanka">Srilanka</option>
+            <option value="america">America</option>
+          </select>
+        </div>
+        <br/><br/><br/><br/>
+        <div>
+
+        </div>
+      </form>
+    </div>
   </div>
   
 </template>
@@ -38,7 +80,13 @@ export default {
       display:true,
       showElement:true,
       count:0,
-      name:'Ashok'
+      name:'Ashok',
+    formValues:{
+      name:'',
+      profileSummary:'',
+      country:'',
+      jobLocation:[]
+    }
       
     }
   },
@@ -69,4 +117,7 @@ export default {
   margin-top: 60px;
   background-color: slategrey;
 }
+input{width:300px;height: 30px;}
+textarea{width: 300px;height:70px}
+select{width:300px;height: 50px;}
 </style>
